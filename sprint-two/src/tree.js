@@ -13,19 +13,19 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-
+  var isFound = false;
   var containsRecursion = function(tree) {
     if (tree.value === target) {
-      return true;
+      isFound = true;
     } 
     else {
       for (var i =0; i < tree.children.length; i++) {
-        return containsRecursion(tree.children[i]);
+        containsRecursion(tree.children[i]);
       }
     }
-    return false;
   }
-  return containsRecursion(this);
+  containsRecursion(this);
+  return isFound;
 };
 
 
